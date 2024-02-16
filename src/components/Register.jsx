@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, googleAuthProvider } from '../firebase'
-import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+// import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { Navigate, useNavigate } from 'react-router-dom';
 
 
@@ -83,27 +83,27 @@ const Register = () => {
               <div class="mobile-menu-wrap mobile-header-border">
                 <nav>
                   <ul class="mobile-menu font-heading">
-                    <li class="has-children"><a class="active" href="/frontend/">Home</a>
+                    <li class="has-children"><a class="active" href="/">Home</a>
 
                     </li>
-                    <li class="has-children"><a href="/frontend/jobs-grid">Find a Job</a>
+                    <li class="has-children"><a href="/">Find a Job</a>
 
                     </li>
-                    <li class="has-children"><a href="/frontend/companies-grid">Recruiters</a>
+                    <li class="has-children"><a href="/">Recruiters</a>
 
                     </li>
-                    <li class="has-children"><a href="/frontend/candidates-grid">Candidates</a>
+                    <li class="has-children"><a href="/">Candidates</a>
 
                     </li>
-                    <li class="has-children"><a href="/frontend/blog-grid">Pages</a>
+                    <li class="has-children"><a href="/">Pages</a>
                       <ul class="sub-menu">
-                        <li><a href="/frontend/page-about">About Us</a></li>
-                        <li><a href="/frontend/page-pricing">Pricing Plan</a></li>
-                        <li><a href="/frontend/page-contact">Contact Us</a></li>
-                        <li><a href="/frontend/page-reset-password">Reset Password</a></li>
+                        <li><a href="/">About Us</a></li>
+                        <li><a href="/">Pricing Plan</a></li>
+                        <li><a href="/">Contact Us</a></li>
+                        <li><a href="/">Reset Password</a></li>
                       </ul>
                     </li>
-                    <li class="has-children"><a href="/frontend/blog-grid">Blog</a>
+                    <li class="has-children"><a href="/">Blog</a>
                     </li>
                     <li><a href="http://wp.alithemes.com/html/jobbox/demos/dashboard" target="_blank">Dashboard</a></li>
                   </ul>
@@ -112,11 +112,11 @@ const Register = () => {
               <div class="mobile-account">
                 <h6 class="mb-10">Your Account</h6>
                 <ul class="mobile-menu font-heading">
-                  <li><a href="#">Profile</a></li>
-                  <li><a href="#">Work Preferences</a></li>
-                  <li><a href="#">Account Settings</a></li>
-                  <li><a href="#">Go Pro</a></li>
-                  <li><a href="/frontend/page-signin">Sign Out</a></li>
+                  <li><a href="/">Profile</a></li>
+                  <li><a href="/">Work Preferences</a></li>
+                  <li><a href="/">Account Settings</a></li>
+                  <li><a href="/">Go Pro</a></li>
+                  <li><a href="/">Sign Out</a></li>
                 </ul>
               </div>
               <div class="site-copyright">Copyright 2022 © JobBox.<br />Designed by AliThemes.</div>
@@ -136,32 +136,32 @@ const Register = () => {
               <div class="mobile-menu-wrap mobile-header-border">
                 <nav>
                   <ul class="mobile-menu font-heading">
-                    <li class="has-children"><a class="active" href="/frontend/">Home</a></li>
-                    <li class="has-children"><a href="/frontend/jobs-grid">Find a Job</a></li>
-                    <li class="has-children"><a href="/frontend/companies-grid">Recruiters</a></li>
-                    <li class="has-children"><a href="/frontend/candidates-grid">Candidates</a>
+                    <li class="has-children"><a class="active" href="/">Home</a></li>
+                    <li class="has-children"><a href="/">Find a Job</a></li>
+                    <li class="has-children"><a href="/">Recruiters</a></li>
+                    <li class="has-children"><a href="/">Candidates</a>
                     </li>
-                    <li class="has-children"><a href="/frontend/blog-grid">Pages</a>
+                    <li class="has-children"><a href="/">Pages</a>
                       <ul class="sub-menu">
-                        <li><a href="/frontend/page-about">About Us</a></li>
-                        <li><a href="/frontend/page-pricing">Pricing Plan</a></li>
-                        <li><a href="/frontend/page-contact">Contact Us</a></li>
-                        <li><a href="/frontend/page-reset-password">Reset Password</a></li>
+                        <li><a href="/">About Us</a></li>
+                        <li><a href="/">Pricing Plan</a></li>
+                        <li><a href="/">Contact Us</a></li>
+                        <li><a href="/">Reset Password</a></li>
                       </ul>
                     </li>
-                    <li class="has-children"><a href="/frontend/blog-grid">Blog</a></li>
-                    <li><a href="http://wp.alithemes.com/html/jobbox/demos/dashboard" target="_blank">Dashboard</a></li>
-                  </ul>
+                    <li class="has-children"><a href="/">Blog</a></li>
+                    <li><a href="http://wp..com/html/jobbox/demos/dashboard" target="_blank">Dashboard</a></li>
+                  </ul>alithemes
                 </nav>
               </div>
               <div class="mobile-account">
                 <h6 class="mb-10">Your Account</h6>
                 <ul class="mobile-menu font-heading">
-                  <li><a href="#">Profile</a></li>
-                  <li><a href="#">Work Preferences</a></li>
-                  <li><a href="#">Account Settings</a></li>
-                  <li><a href="#">Go Pro</a></li>
-                  <li><a href="/frontend/page-signin">Sign Out</a></li>
+                  <li><a href="/">Profile</a></li>
+                  <li><a href="/">Work Preferences</a></li>
+                  <li><a href="/">Account Settings</a></li>
+                  <li><a href="/">Go Pro</a></li>
+                  <li><a href="/">Sign Out</a></li>
                 </ul>
               </div>
               <div class="site-copyright">Copyright 2022 © JobBox.<br />Designed by AliThemes.</div>
@@ -224,55 +224,55 @@ const Register = () => {
           <div class="row">
             <div class="footer-col-1 col-md-3 col-sm-12"><a href="/frontend/"><img alt="jobBox" src="/images/jobhub-logo.svg" /></a>
               <div class="mt-20 mb-20 font-xs color-text-paragraph-2">JobBox is the heart of the design community and the best resource to discover and connect with designers and jobs worldwide.</div>
-              <div class="footer-social"><a class="icon-socials icon-facebook" href="#"></a><a class="icon-socials icon-twitter" href="#"></a><a class="icon-socials icon-linkedin" href="#"></a></div>
+              <div class="footer-social"><a class="icon-socials icon-facebook" href="/"></a><a class="icon-socials icon-twitter" href="/"></a><a class="icon-socials icon-linkedin" href="/"></a></div>
             </div>
             <div class="footer-col-2 col-md-2 col-xs-6">
               <h6 class="mb-20">Resources</h6>
               <ul class="menu-footer">
-                <li><a href="#">About us</a></li>
-                <li><a href="#">Our Team</a></li>
-                <li><a href="#">Products</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="/">About us</a></li>
+                <li><a href="/">Our Team</a></li>
+                <li><a href="/">Products</a></li>
+                <li><a href="/">Contact</a></li>
               </ul>
             </div>
             <div class="footer-col-3 col-md-2 col-xs-6">
               <h6 class="mb-20">Community</h6>
               <ul class="menu-footer">
-                <li><a href="#">Feature</a></li>
-                <li><a href="#">Pricing</a></li>
-                <li><a href="#">Credit</a></li>
-                <li><a href="#">FAQ</a></li>
+                <li><a href="/">Feature</a></li>
+                <li><a href="/">Pricing</a></li>
+                <li><a href="/">Credit</a></li>
+                <li><a href="/">FAQ</a></li>
               </ul>
             </div>
             <div class="footer-col-4 col-md-2 col-xs-6">
               <h6 class="mb-20">Quick links</h6>
               <ul class="menu-footer">
-                <li><a href="#">iOS</a></li>
-                <li><a href="#">Android</a></li>
-                <li><a href="#">Microsoft</a></li>
-                <li><a href="#">Desktop</a></li>
+                <li><a href="/">iOS</a></li>
+                <li><a href="/">Android</a></li>
+                <li><a href="/">Microsoft</a></li>
+                <li><a href="/">Desktop</a></li>
               </ul>
             </div>
             <div class="footer-col-5 col-md-2 col-xs-6">
               <h6 class="mb-20">More</h6>
               <ul class="menu-footer">
-                <li><a href="#">Privacy</a></li>
-                <li><a href="#">Help</a></li>
-                <li><a href="#">Terms</a></li>
-                <li><a href="#">FAQ</a></li>
+                <li><a href="/">Privacy</a></li>
+                <li><a href="/">Help</a></li>
+                <li><a href="/">Terms</a></li>
+                <li><a href="/">FAQ</a></li>
               </ul>
             </div>
             <div class="footer-col-6 col-md-3 col-sm-12">
               <h6 class="mb-20">Download App</h6>
               <p class="color-text-paragraph-2 font-xs">Download our Apps and get extra 15% Discount on your first Order…!</p>
-              <div class="mt-15"><a class="mr-5" href="#"><img src="/images/app-store.png" alt="joxBox" /></a><a href="#"><img src="/images/android.png" alt="joxBox" /></a></div>
+              <div class="mt-15"><a class="mr-5" href="/"><img src="/images/app-store.png" alt="joxBox" /></a><a href="/"><img src="/images/android.png" alt="joxBox" /></a></div>
             </div>
           </div>
           <div class="footer-bottom mt-50">
             <div class="row">
               <div class="col-md-6"><span class="font-xs color-text-paragraph">Copyright © 2022. JobBox all right reserved</span></div>
               <div class="col-md-6 text-md-end text-start">
-                <div class="footer-social"><a class="font-xs color-text-paragraph" href="#">Privacy Policy</a><a class="font-xs color-text-paragraph mr-30 ml-30" href="#">Terms &amp; Conditions</a><a class="font-xs color-text-paragraph" href="#">Security</a></div>
+                <div class="footer-social"><a class="font-xs color-text-paragraph" href="/">Privacy Policy</a><a class="font-xs color-text-paragraph mr-30 ml-30" href="/">Terms &amp; Conditions</a><a class="font-xs color-text-paragraph" href="/">Security</a></div>
               </div>
             </div>
           </div>
