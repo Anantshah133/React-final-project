@@ -10,7 +10,7 @@ const Login = () => {
     const [showLoader, setShowLoader] = useState(true);
 
     useEffect(() => {
-        const delay = 2000; 
+        const delay = 2000;
         const timeoutId = setTimeout(() => {
             setShowLoader(false);
         }, delay);
@@ -22,14 +22,14 @@ const Login = () => {
     const [open, setOpen] = useState(false);
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
-          return;
+            return;
         }
         setOpen(false);
-      };    
-      const resetForm = ()=>{
+    };
+    const resetForm = () => {
         setEmail("")
         setPassword("")
-      }
+    }
     const handleUserSignIn = (e) => {
         e.preventDefault();
         try {
@@ -64,60 +64,23 @@ const Login = () => {
         } catch (error) {
             console.log(error);
         }
-      };
+    };
     return (
         <div>
-             {showLoader && (
-        <div id="preloader-active">
-          <div className="preloader d-flex align-items-center justify-content-center">
-            <div className="preloader-inner position-relative">
-              <div className="text-center">
-                <img src="images/loading.gif" alt="jobBox" />
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-            <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}> 
-                <Alert onClose={handleClose} severity="success" variant="filled"sx={{ width: '100%' }}>please check you Email address & Password</Alert>
-            </Snackbar>
-            <header class="header sticky-bar">
-                <div class="container">
-                    <div class="main-header">
-                        <div class="header-left">
-                            <div class="header-logo"><a class="d-flex" href="/frontend/"><img alt="jobBox" src="/images/jobhub-logo.svg" /></a></div>
-                        </div>
-                        <div class="header-nav">
-                            <nav class="nav-main-menu">
-                                <ul class="main-menu">
-                                    <li class="has-children"><a class="active" href="/frontend/">Home</a></li>
-                                    <li class="has-children"><a href="/frontend/jobs-grid">Find a Job</a></li>
-                                    <li class="has-children"><a href="/frontend/companies-grid">Recruiters</a></li>
-                                    <li class="has-children"><a href="/frontend/candidates-grid">Candidates</a></li>
-                                    <li class="has-children"><a href="/frontend/blog-grid">Pages</a>
-                                        <ul class="sub-menu">
-                                            <li><a href="/frontend/page-about">About Us</a></li>
-                                            <li><a href="/frontend/page-pricing">Pricing Plan</a></li>
-                                            <li><a href="/frontend/page-contact">Contact Us</a></li>
-                                            <li><a href="/frontend/page-signin">Signin</a></li>
-                                            <li><a href="/frontend/page-reset-password">Reset Password</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="has-children"><a href="/frontend/blog-grid">Blog</a></li>
-                                    <li class="dashboard"><a href="http://wp.alithemes.com/html/jobbox/demos/dashboard" target="_blank">Dashboard</a></li>
-                                </ul>
-                            </nav>
-                            <div class="burger-icon burger-icon-white"><span class="burger-icon-top"></span><span class="burger-icon-mid"></span><span class="burger-icon-bottom"></span></div>
-                        </div>
-                        <div class="header-right">
-                            <div class="block-signin">
-                                <a class="text-link-bd-btom hover-up" href="/frontend/page-register">Register</a>
-                                <a class="btn btn-default btn-shadow ml-40 hover-up" href="/frontend/page-signin">Sign in</a>
+            {showLoader && (
+                <div id="preloader-active">
+                    <div className="preloader d-flex align-items-center justify-content-center">
+                        <div className="preloader-inner position-relative">
+                            <div className="text-center">
+                                <img src="images/loading.gif" alt="jobBox" />
                             </div>
                         </div>
                     </div>
                 </div>
-            </header>
+            )}
+            <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
+                <Alert onClose={handleClose} severity="success" variant="filled" sx={{ width: '100%' }}>please check you Email address & Password</Alert>
+            </Snackbar>
             <div class="mobile-header-active mobile-header-wrapper-style perfect-scrollbar">
                 <div class="mobile-header-wrapper-inner">
                     <div class="mobile-header-content-area">
@@ -130,27 +93,27 @@ const Login = () => {
                             <div class="mobile-menu-wrap mobile-header-border">
                                 <nav>
                                     <ul class="mobile-menu font-heading">
-                                        <li class="has-children"><a class="active" href="/frontend/">Home</a>
+                                        <li class="has-children"><a class="active" href="/">Home</a>
 
                                         </li>
-                                        <li class="has-children"><a href="/frontend/jobs-grid">Find a Job</a>
+                                        <li class="has-children"><a href="/">Find a Job</a>
 
                                         </li>
-                                        <li class="has-children"><a href="/frontend/companies-grid">Recruiters</a>
+                                        <li class="has-children"><a href="/">Recruiters</a>
 
                                         </li>
-                                        <li class="has-children"><a href="/frontend/candidates-grid">Candidates</a>
+                                        <li class="has-children"><a href="/">Candidates</a>
 
                                         </li>
-                                        <li class="has-children"><a href="/frontend/blog-grid">Pages</a>
+                                        <li class="has-children"><a href="/">Pages</a>
                                             <ul class="sub-menu">
-                                                <li><a href="/frontend/page-about">About Us</a></li>
-                                                <li><a href="/frontend/page-pricing">Pricing Plan</a></li>
-                                                <li><a href="/frontend/page-contact">Contact Us</a></li>
-                                                <li><a href="/frontend/page-reset-password">Reset Password</a></li>
+                                                <li><a href="/">About Us</a></li>
+                                                <li><a href="/">Pricing Plan</a></li>
+                                                <li><a href="/">Contact Us</a></li>
+                                                <li><a href="/">Reset Password</a></li>
                                             </ul>
                                         </li>
-                                        <li class="has-children"><a href="/frontend/blog-grid">Blog</a>
+                                        <li class="has-children"><a href="/">Blog</a>
                                         </li>
                                         <li><a href="http://wp.alithemes.com/html/jobbox/demos/dashboard" target="_blank">Dashboard</a></li>
                                     </ul>
@@ -163,7 +126,7 @@ const Login = () => {
                                     <li><a href="#">Work Preferences</a></li>
                                     <li><a href="#">Account Settings</a></li>
                                     <li><a href="#">Go Pro</a></li>
-                                    <li><a href="/frontend/page-signin">Sign Out</a></li>
+                                    <li><a href="/page-signin">Sign Out</a></li>
                                 </ul>
                             </div>
                             <div class="site-copyright">Copyright 2022 © JobBox.<br />Designed by AliThemes.</div>
@@ -183,20 +146,20 @@ const Login = () => {
                             <div class="mobile-menu-wrap mobile-header-border">
                                 <nav>
                                     <ul class="mobile-menu font-heading">
-                                        <li class="has-children"><a class="active" href="/frontend/">Home</a></li>
-                                        <li class="has-children"><a href="/frontend/jobs-grid">Find a Job</a></li>
-                                        <li class="has-children"><a href="/frontend/companies-grid">Recruiters</a></li>
-                                        <li class="has-children"><a href="/frontend/candidates-grid">Candidates</a>
+                                        <li class="has-children"><a class="active" href="/">Home</a></li>
+                                        <li class="has-children"><a href="/">Find a Job</a></li>
+                                        <li class="has-children"><a href="/">Recruiters</a></li>
+                                        <li class="has-children"><a href="/">Candidates</a>
                                         </li>
-                                        <li class="has-children"><a href="/frontend/blog-grid">Pages</a>
+                                        <li class="has-children"><a href="/">Pages</a>
                                             <ul class="sub-menu">
-                                                <li><a href="/frontend/page-about">About Us</a></li>
-                                                <li><a href="/frontend/page-pricing">Pricing Plan</a></li>
-                                                <li><a href="/frontend/page-contact">Contact Us</a></li>
-                                                <li><a href="/frontend/page-reset-password">Reset Password</a></li>
+                                                <li><a href="/">About Us</a></li>
+                                                <li><a href="/">Pricing Plan</a></li>
+                                                <li><a href="/">Contact Us</a></li>
+                                                <li><a href="/">Reset Password</a></li>
                                             </ul>
                                         </li>
-                                        <li class="has-children"><a href="/frontend/blog-grid">Blog</a></li>
+                                        <li class="has-children"><a href="/blog-grid">Blog</a></li>
                                         <li><a href="http://wp.alithemes.com/html/jobbox/demos/dashboard" target="_blank">Dashboard</a></li>
                                     </ul>
                                 </nav>
@@ -208,7 +171,7 @@ const Login = () => {
                                     <li><a href="#">Work Preferences</a></li>
                                     <li><a href="#">Account Settings</a></li>
                                     <li><a href="#">Go Pro</a></li>
-                                    <li><a href="/frontend/page-signin">Sign Out</a></li>
+                                    <li><a href="/">Sign Out</a></li>
                                 </ul>
                             </div>
                             <div class="site-copyright">Copyright 2022 © JobBox.<br />Designed by AliThemes.</div>
@@ -240,12 +203,12 @@ const Login = () => {
                                     <div class="login_footer form-group d-flex justify-content-between">
                                         <label class="cb-container">
                                             <input type="checkbox" /><span class="text-small">Remenber me</span><span class="checkmark"></span>
-                                        </label><a class="text-muted" href="/frontend/page-contact">Forgot Password</a>
+                                        </label><a class="text-muted" href="/page-contact">Forgot Password</a>
                                     </div>
                                     <div class="form-group">
                                         <button class="btn btn-brand-1 hover-up w-100" type="submit" onClick={handleUserSignIn} name="login">Login</button>
                                     </div>
-                                    <div class="text-muted text-center">Don't have an Account? <a href="/frontend/page-signin">Sign up</a></div>
+                                    <div class="text-muted text-center">Don't have an Account? <a href="/page-signin">Sign up</a></div>
                                 </form>
                             </div>
                             <div class="img-1 d-none d-lg-block"><img class="shape-1" src="/images/img-4.svg" alt="JobBox" /></div>
@@ -257,7 +220,7 @@ const Login = () => {
             <footer class="footer mt-50">
                 <div class="container">
                     <div class="row">
-                        <div class="footer-col-1 col-md-3 col-sm-12"><a href="/frontend/"><img alt="jobBox" src="/images/jobhub-logo.svg" /></a>
+                        <div class="footer-col-1 col-md-3 col-sm-12"><a href="/"><img alt="jobBox" src="/images/jobhub-logo.svg" /></a>
                             <div class="mt-20 mb-20 font-xs color-text-paragraph-2">JobBox is the heart of the design community and the best resource to discover and connect with designers and jobs worldwide.</div>
                             <div class="footer-social"><a class="icon-socials icon-facebook" href="#"></a><a class="icon-socials icon-twitter" href="#"></a><a class="icon-socials icon-linkedin" href="#"></a></div>
                         </div>
