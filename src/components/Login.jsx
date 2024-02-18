@@ -3,8 +3,8 @@ import { createUserWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { auth, googleAuthProvider } from '../firebase'
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { Navigate, useNavigate } from 'react-router-dom';
-import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
+// import Snackbar from '@mui/material/Snackbar';
+// import Alert from '@mui/material/Alert';
 
 const Login = () => {
     const [showLoader, setShowLoader] = useState(true);
@@ -60,7 +60,7 @@ const Login = () => {
             localStorage.setItem('users', JSON.stringify(updatedUsers));
             localStorage.setItem('token', user.accessToken);
             localStorage.setItem('user', JSON.stringify(user));
-            // navigate('/');
+            
         } catch (error) {
             console.log(error);
         }
@@ -78,9 +78,9 @@ const Login = () => {
                     </div>
                 </div>
             )}
-            <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
+            {/* <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity="success" variant="filled" sx={{ width: '100%' }}>please check you Email address & Password</Alert>
-            </Snackbar>
+            </Snackbar> */}
             <div class="mobile-header-active mobile-header-wrapper-style perfect-scrollbar">
                 <div class="mobile-header-wrapper-inner">
                     <div class="mobile-header-content-area">

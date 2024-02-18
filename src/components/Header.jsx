@@ -16,7 +16,7 @@ const Header = () => {
                         <nav className="nav-main-menu">
                             <ul className="main-menu">
                                 <li className="has-children"><Link className="active" to="/">Home</Link></li>
-                                <li className="has-children"><Link to="/">Find a Job</Link></li>
+                                <li className="has-children"><Link to="/jobs-grid">Find a Job</Link></li>
                                 <li className="has-children"><Link to="/">Recruiters</Link></li>
                                 <li className="has-children"><Link to="/">Candidates</Link></li>
                                 <li className="has-children"><Link to="/">Pages</Link>

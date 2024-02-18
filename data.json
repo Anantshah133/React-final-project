@@ -4,7 +4,7 @@
         "company": "LinkedIn",
         "location": "New York, US",
         "title": "UI / UX Designer fulltime",
-        "jobType": "Full time",
+        "jobType": "full time",
         "skills": [
             "Adobe XD",
             "Figma",
@@ -18,7 +18,7 @@
         "company": "Kpit Tech",
         "location": "New York, US",
         "title": "Full Stack Engineer",
-        "jobType": "Part time",
+        "jobType": "part time",
         "skills": [
             "NodeJS",
             "React"
@@ -31,7 +31,7 @@
         "company": "Bing Search",
         "location": "Bermingham, UK",
         "title": "Java Software Engineer",
-        "jobType": "Internship",
+        "jobType": "part time",
         "skills": [
             "Python",
             "AWS"
@@ -44,7 +44,7 @@
         "company": "Pharma Bird",
         "location": "Gujarat, India",
         "title": "Lab Assistant",
-        "jobType": "Full time",
+        "jobType": "full time",
         "skills": [
             "Medical",
             "Pharmapsueticals",
@@ -58,7 +58,7 @@
         "company": "Dailymotion",
         "location": "Caneda",
         "title": "Frontend Developer",
-        "jobType": "Full time",
+        "jobType": "full time",
         "skills": [
             "Typescript",
             "Javascript",
@@ -72,7 +72,7 @@
         "company": "Linkedin Jobs",
         "location": "Australia",
         "title": "Business Development Executive",
-        "jobType": "Full time",
+        "jobType": "full time",
         "skills": [
             "Business",
             "Communication",
@@ -86,21 +86,21 @@
         "company": "Blackrock",
         "location": "Chaman, Italy",
         "title": "Finance Manager",
-        "jobType": "Part time",
+        "jobType": "part time",
         "skills": [
             "Accounting",
             "Finance",
             "Stock"
         ],
         "salary": 400,
-        "type": "Finance"
+        "type": "finance"
     },
     {
         "jobImg": "https://jobbox-html.netlify.app/frontend/assets/imgs/brands/brand-8.png",
         "company": "Quora JSC",
         "location": "Bengaluru, India",
         "title": "Senior System Engineer",
-        "jobType": "Full time",
+        "jobType": "full time",
         "skills": [
             "Php",
             "Android"
@@ -113,7 +113,7 @@
         "company": "Products Manager",
         "location": "Australia",
         "title": "Senior System Engineer",
-        "jobType": "Full time",
+        "jobType": "full time",
         "skills": [
             "ASP.NET",
             "Figma"
@@ -126,7 +126,7 @@
         "company": "Periscope",
         "location": "Abu dhabi, dubai",
         "title": "Lead Quality Control QA",
-        "jobType": "Work From Home",
+        "jobType": "internship",
         "skills": [
             "IOS",
             "Laravel",
@@ -140,7 +140,7 @@
         "company": "Tech Innovations",
         "location": "San Francisco, US",
         "title": "Mobile App Developer",
-        "jobType": "Full time",
+        "jobType": "full time",
         "skills": [
             "Android",
             "iOS",
@@ -155,7 +155,7 @@
         "company": "ArtCraft Studios",
         "location": "Los Angeles, US",
         "title": "Graphic Designer",
-        "jobType": "Part time",
+        "jobType": "internship",
         "skills": [
             "Adobe Illustrator",
             "Sketch",
@@ -169,7 +169,7 @@
         "company": "HealthHub",
         "location": "Boston, US",
         "title": "Medical Researcher",
-        "jobType": "Internship",
+        "jobType": "internship",
         "skills": [
             "Biology",
             "Chemistry",
@@ -183,7 +183,7 @@
         "company": "FinTech Solutions",
         "location": "London, UK",
         "title": "Financial Analyst",
-        "jobType": "Full time",
+        "jobType": "full time",
         "skills": [
             "Financial Modeling",
             "Data Analysis",
@@ -197,7 +197,7 @@
         "company": "MediCare Innovations",
         "location": "Mumbai, India",
         "title": "Medical Device Engineer",
-        "jobType": "Part time",
+        "jobType": "part time",
         "skills": [
             "Medical Devices",
             "Biomedical Engineering",
@@ -207,4 +207,3 @@
         "type": "medical"
     }
 ]
-

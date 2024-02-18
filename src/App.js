@@ -5,6 +5,7 @@ import Register from './components/Register';
 import Login from './components/Login';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
+import JobsGrid from './components/JobsGrid'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/register' element={<Register />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/jobs-grid' element={<JobsGrid />} />
       </Routes>
     </BrowserRouter>
   );
