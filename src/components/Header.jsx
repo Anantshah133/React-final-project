@@ -1,6 +1,30 @@
-import { Link } from "react-router-dom"
+import { getAuth, signOut } from "firebase/auth";
+import { useEffect, useState } from "react"
+import { Link, useNavigate } from "react-router-dom"
 
 const Header = () => {
+    const auth = getAuth();
+    const navigate = useNavigate();
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const adminFlag = JSON.parse(localStorage.getItem("adminFlag")) || false;
+
+    useEffect(()=>{
+        const loginFlag = JSON.parse(localStorage.getItem("loginFlag")) || false;
+        setIsLoggedIn(loginFlag);
+    }, []);
+
+    console.log(isLoggedIn);
+    
+    const handleLogout = () => {
+        localStorage.removeItem("loginFlag");
+        localStorage.removeItem("adminFlag");
+        signOut(auth).then(() => {
+            setIsLoggedIn(false);
+            setTimeout(()=>navigate('/'), 500)
+        }).catch((err) => {
+            console.log('Error Occured ', err);
+        });
+    }
     return (
         <header className="header sticky-bar">
             <div className="container">
@@ -29,20 +53,30 @@ const Header = () => {
                                 </li>
                                 <li className="has-children"><Link to="/">Blog</Link>
                                 </li>
-                                <li className="dashboard"><Link to="/">Dashboard</Link></li>
+                                <li className="dashboard"><Link to="/dashboard">Dashboard</Link></li>
                             </ul>
                         </nav>
                         <div className="burger-icon burger-icon-white"><span className="burger-icon-top"></span><span className="burger-icon-mid"></span><span className="burger-icon-bottom"></span></div>
                     </div>
                     <div className="header-right">
                         <div className="block-signin">
-                            <Link className="text-link-bd-btom hover-up" to="/register">Register</Link>
-                            <Link className="btn btn-default btn-shadow ml-40 hover-up" to="/login">Sign in</Link>
+                            {
+                                isLoggedIn || adminFlag ? (
+                                    <Link className="btn btn-default btn-shadow ml-40 hover-up" onClick={handleLogout}>
+                                        Log-out
+                                    </Link>
+                                ) : (
+                                    <>
+                                        <Link className="text-link-bd-btom hover-up" to="/register">Register</Link>
+                                        <Link className="btn btn-default btn-shadow ml-40 hover-up" to="/login">Sign in</Link>
+                                    </>
+                                )
+                            }
                         </div>
                     </div>
                 </div>
             </div>
-        </header>
+        </header >
     )
 }
 
