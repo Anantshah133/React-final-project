@@ -2,7 +2,7 @@ import { getAuth, signOut } from "firebase/auth";
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 
-const Header = () => {
+const Header = ({styles}) => {
     const auth = getAuth();
     const navigate = useNavigate();
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -20,13 +20,13 @@ const Header = () => {
         localStorage.removeItem("adminFlag");
         signOut(auth).then(() => {
             setIsLoggedIn(false);
-            setTimeout(()=>navigate('/'), 500)
+            setTimeout(()=> navigate('/'), 500)
         }).catch((err) => {
             console.log('Error Occured ', err);
         });
     }
     return (
-        <header className="header sticky-bar">
+        <header className="header sticky-bar" style={styles ? styles : {}}>
             <div className="container">
                 <div className="main-header">
                     <div className="header-left">

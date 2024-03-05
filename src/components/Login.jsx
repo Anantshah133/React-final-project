@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react'
-import { signInWithPopup } from "firebase/auth";
-import { auth, googleAuthProvider } from '../firebase'
-import { signInWithEmailAndPassword } from "firebase/auth";
+import React, { useEffect, useState } from 'react';
+import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import { auth, googleAuthProvider } from '../firebase';
 import { useNavigate } from 'react-router-dom';
-// import Snackbar from '@mui/material/Snackbar';
-// import Alert from '@mui/material/Alert';
 
 const Login = ({ isLoggedIn, setIsLoggedIn }) => {
     const [showLoader, setShowLoader] = useState(true);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    const [showSuccessToast, setShowSuccessToast] = useState(false);
+    const [showErrorToast, setShowErrorToast] = useState(false);
+
     useEffect(() => {
         const delay = 2000;
         const timeoutId = setTimeout(() => {
@@ -17,39 +19,19 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
         return () => clearTimeout(timeoutId);
     }, []);
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    // const [open, setOpen] = useState(false);
-    // const handleClose = (event, reason) => {
-    //     if (reason === 'clickaway') {
-    //         return;
-    //     }
-    //     setOpen(false);
-    // };
-    const resetForm = () => {
-        setEmail("")
-        setPassword("")
-    }
+    const staticEmail = "heet@gmail.com";
+    const staticPassword = "heet@123";
+
     const handleUserSignIn = (e) => {
-        e.preventDefault();
-        try {
-            signInWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    const user = userCredential.user;
-                    localStorage.setItem("token", user.accessToken);
-                    localStorage.setItem("user", JSON.stringify(user));
-                    localStorage.setItem('loginFlag', "true");
-                })
-                .catch((error) => {
-                    console.log(error);
-                    // setOpen(true);
-                    resetForm();
-                });
+        e.preventDefault()
+        if (email === staticEmail && password === staticPassword) {
+            localStorage.setItem("loginFlag", "true");
+            setIsLoggedIn(true);
+            setTimeout(() => navigate('/'), 1000)
+        } else {
+            setShowErrorToast(true);
         }
-        catch (error) {
-            console.log(error);
-        }
-    };
+    }
     const handleGoogleLogin = async () => {
         setIsLoggedIn(true);
         try {
@@ -61,11 +43,11 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
             localStorage.setItem('token', user.accessToken);
             localStorage.setItem('user', JSON.stringify(user));
             localStorage.setItem('loginFlag', "true");
-            setTimeout(()=>{
-                navigate('/jobs-grid');
-            }, 500);
+            navigate('/jobs-grid');
+
         } catch (error) {
             console.log(error);
+
         }
     };
     return (
@@ -81,208 +63,91 @@ const Login = ({ isLoggedIn, setIsLoggedIn }) => {
                     </div>
                 </div>
             )}
-            <div class="mobile-header-active mobile-header-wrapper-style perfect-scrollbar">
-                <div class="mobile-header-wrapper-inner">
-                    <div class="mobile-header-content-area">
-                        <div class="perfect-scroll">
-                            <div class="mobile-search mobile-header-border mb-30">
-                                <form action="#">
-                                    <input type="text" placeholder="Search…" /><i class="fi-rr-search"></i>
-                                </form>
-                            </div>
-                            <div class="mobile-menu-wrap mobile-header-border">
-                                <nav>
-                                    <ul class="mobile-menu font-heading">
-                                        <li class="has-children"><a class="active" href="/">Home</a>
-
-                                        </li>
-                                        <li class="has-children"><a href="/">Find a Job</a>
-
-                                        </li>
-                                        <li class="has-children"><a href="/">Recruiters</a>
-
-                                        </li>
-                                        <li class="has-children"><a href="/">Candidates</a>
-
-                                        </li>
-                                        <li class="has-children"><a href="/">Pages</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="/">About Us</a></li>
-                                                <li><a href="/">Pricing Plan</a></li>
-                                                <li><a href="/">Contact Us</a></li>
-                                                <li><a href="/">Reset Password</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="has-children"><a href="/">Blog</a>
-                                        </li>
-                                        <li><a href="http://wp.alithemes.com/html/jobbox/demos/dashboard" target="_blank">Dashboard</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                            <div class="mobile-account">
-                                <h6 class="mb-10">Your Account</h6>
-                                <ul class="mobile-menu font-heading">
-                                    <li><a href="#">Profile</a></li>
-                                    <li><a href="#">Work Preferences</a></li>
-                                    <li><a href="#">Account Settings</a></li>
-                                    <li><a href="#">Go Pro</a></li>
-                                    <li><a href="/page-signin">Sign Out</a></li>
-                                </ul>
-                            </div>
-                            <div class="site-copyright">Copyright 2022 © JobBox.<br />Designed by AliThemes.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="mobile-header-active mobile-header-wrapper-style perfect-scrollbar">
-                <div class="mobile-header-wrapper-inner">
-                    <div class="mobile-header-content-area">
-                        <div class="perfect-scroll">
-                            <div class="mobile-search mobile-header-border mb-30">
-                                <form action="#">
-                                    <input type="text" placeholder="Search…" /><i class="fi-rr-search"></i>
-                                </form>
-                            </div>
-                            <div class="mobile-menu-wrap mobile-header-border">
-                                <nav>
-                                    <ul class="mobile-menu font-heading">
-                                        <li class="has-children"><a class="active" href="/">Home</a></li>
-                                        <li class="has-children"><a href="/">Find a Job</a></li>
-                                        <li class="has-children"><a href="/">Recruiters</a></li>
-                                        <li class="has-children"><a href="/">Candidates</a>
-                                        </li>
-                                        <li class="has-children"><a href="/">Pages</a>
-                                            <ul class="sub-menu">
-                                                <li><a href="/">About Us</a></li>
-                                                <li><a href="/">Pricing Plan</a></li>
-                                                <li><a href="/">Contact Us</a></li>
-                                                <li><a href="/">Reset Password</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="has-children"><a href="/blog-grid">Blog</a></li>
-                                        <li><a href="http://wp.alithemes.com/html/jobbox/demos/dashboard" target="_blank">Dashboard</a></li>
-                                    </ul>
-                                </nav>
-                            </div>
-                            <div class="mobile-account">
-                                <h6 class="mb-10">Your Account</h6>
-                                <ul class="mobile-menu font-heading">
-                                    <li><a href="#">Profile</a></li>
-                                    <li><a href="#">Work Preferences</a></li>
-                                    <li><a href="#">Account Settings</a></li>
-                                    <li><a href="#">Go Pro</a></li>
-                                    <li><a href="/">Sign Out</a></li>
-                                </ul>
-                            </div>
-                            <div class="site-copyright">Copyright 2022 © JobBox.<br />Designed by AliThemes.</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <main class="main">
-                <section class="pt-100 login-register">
-                    <div class="container">
-                        <div class="row login-register-cover">
-                            <div class="col-lg-4 col-md-6 col-sm-12 mx-auto">
-                                <div class="text-center">
-                                    <p class="font-sm text-brand-2">Welcome back! </p>
-                                    <h2 class="mt-10 mb-5 text-brand-1">Member Login</h2>
-                                    <p class="font-sm text-muted mb-30">Access to all features. No credit card required.</p>
-                                    <button class="btn social-login hover-up mb-20" onClick={handleGoogleLogin}><img src="/images/icon-google.svg" alt="jobbox" /><strong>Sign in with Google</strong></button>
-                                    <div class="divider-text-center"><span>Or continue with</span></div>
+            <main className="main">
+                <section className="pt-100 login-register">
+                    <div className="container">
+                        <div className="row login-register-cover">
+                            <div className="col-lg-4 col-md-6 col-sm-12 mx-auto">
+                                <div className="text-center">
+                                    <p className="font-sm text-brand-2">Welcome back! </p>
+                                    <h2 className="mt-10 mb-5 text-brand-1">Member Login</h2>
+                                    <p className="font-sm text-muted mb-30">Access to all features. No credit card required.</p>
+                                    <button className="btn social-login hover-up mb-20" onClick={handleGoogleLogin}>
+                                        <img src="/images/icon-google.svg" alt="jobbox" />
+                                        <strong>Sign in with Google</strong>
+                                    </button>
+                                    <div className="divider-text-center"><span>Or continue with</span></div>
                                 </div>
-                                <form class="login-register text-start mt-20" action="post" >
-                                    <div class="form-group">
-                                        <label class="form-label" for="input-1">Email address *</label>
-                                        <input class="form-control" type="text" required="" value={email} onChange={(e) => setEmail(e.target.value)} name="fullname" placeholder="Steven Job" />
+                                <form className="login-register text-start mt-20" >
+                                    <div className="form-group">
+                                        <label className="form-label" htmlFor="input-1">Email address *</label>
+                                        <input className="form-control" type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Enter your email" required />
                                     </div>
-                                    <div class="form-group">
-                                        <label class="form-label" for="input-4">Password *</label>
-                                        <input class="form-control" type="password" required="" name="password" placeholder="************" value={password} onChange={(e) => setPassword(e.target.value)} />
+                                    <div className="form-group">
+                                        <label className="form-label" htmlFor="input-4">Password *</label>
+                                        <input className="form-control" type="password" onChange={(e) => setPassword(e.target.value)} placeholder="Enter your password" required />
                                     </div>
-                                    <div class="login_footer form-group d-flex justify-content-between">
-                                        <label class="cb-container">
-                                            <input type="checkbox" /><span class="text-small">Remenber me</span><span class="checkmark"></span>
-                                        </label><a class="text-muted" href="/page-contact">Forgot Password</a>
+                                    <div className="login_footer form-group d-flex justify-content-between">
+                                        <label className="cb-container">
+                                        </label><a className="text-muted" href="/page-contact">Forgot Password</a>
                                     </div>
-                                    <div class="form-group">
-                                        <button class="btn btn-brand-1 hover-up w-100" type="submit" onClick={handleUserSignIn} name="login">Login</button>
+                                    {showSuccessToast && (
+                                        <>
+                                            <div id="toast-success" className="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert"></div>
+                                            <div id="toast-success" class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
+                                                <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-green-100 rounded-lg dark:bg-green-800 dark:text-green-200">
+                                                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                                                    </svg>
+                                                    <span class="sr-only">Check icon</span>
+                                                </div>
+                                                <div class="ms-3 text-sm font-normal">Item moved successfully.</div>
+                                                <button type="button" onClick={() => setShowSuccessToast(false)} class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-success" aria-label="Close">
+                                                    <span class="sr-only">Close</span>
+                                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </>
+                                    )}
+
+                                    {/* Error toast */}
+                                    {showErrorToast && (
+                                        <>
+                                            {/* <div id="toast-danger" className="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert"></div> */}
+                                            <div id="toast-danger" class="flex danger-toast items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
+                                                <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-500 bg-red-100 rounded-lg dark:bg-red-800 dark:text-red-200">
+                                                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                                                        <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 11.793a1 1 0 1 1-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L8.586 10 6.293 7.707a1 1 0 0 1 1.414-1.414L10 8.586l2.293-2.293a1 1 0 0 1 1.414 1.414L11.414 10l2.293 2.293Z" />
+                                                    </svg>
+                                                    <span class="sr-only">Error icon</span>
+                                                </div>
+                                                <div class="ms-3 text-sm font-normal">Item has been deleted.</div>
+                                                <button type="button" onClick={() => setShowErrorToast(false)} class="ms-auto -mx-1.5 -my-1.5 bg-white text-gray-400 hover:text-gray-900 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 hover:bg-gray-100 inline-flex items-center justify-center h-8 w-8 dark:text-gray-500 dark:hover:text-white dark:bg-gray-800 dark:hover:bg-gray-700" data-dismiss-target="#toast-danger" aria-label="Close">
+                                                    <span class="sr-only">Close</span>
+                                                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                                    </svg>
+                                                </button>
+                                            </div>
+                                        </>
+                                    )}
+
+                                    <div className="form-group">
+                                        <button className="btn btn-brand-1 hover-up w-100" type="submit" name="login" onClick={handleUserSignIn}>Login</button>
                                     </div>
-                                    <div class="text-muted text-center">Don't have an Account? <a href="/page-signin">Sign up</a></div>
+                                    <div className="text-muted text-center">Don't have an Account? <a href="/page-signin">Sign up</a></div>
                                 </form>
                             </div>
-                            <div class="img-1 d-none d-lg-block"><img class="shape-1" src="/images/img-4.svg" alt="JobBox" /></div>
-                            <div class="img-2"><img src="/images/img-3.svg" alt="JobBox" /></div>
+                            <div className="img-1 d-none d-lg-block"><img className="shape-1" src="/images/img-4.svg" alt="JobBox" /></div>
+                            <div className="img-2"><img src="/images/img-3.svg" alt="JobBox" /></div>
                         </div>
                     </div>
                 </section>
             </main>
-            <footer class="footer mt-50">
-                <div class="container">
-                    <div class="row">
-                        <div class="footer-col-1 col-md-3 col-sm-12"><a href="/"><img alt="jobBox" src="/images/jobhub-logo.svg" /></a>
-                            <div class="mt-20 mb-20 font-xs color-text-paragraph-2">JobBox is the heart of the design community and the best resource to discover and connect with designers and jobs worldwide.</div>
-                            <div class="footer-social"><a class="icon-socials icon-facebook" href="#"></a><a class="icon-socials icon-twitter" href="#"></a><a class="icon-socials icon-linkedin" href="#"></a></div>
-                        </div>
-                        <div class="footer-col-2 col-md-2 col-xs-6">
-                            <h6 class="mb-20">Resources</h6>
-                            <ul class="menu-footer">
-                                <li><a href="#">About us</a></li>
-                                <li><a href="#">Our Team</a></li>
-                                <li><a href="#">Products</a></li>
-                                <li><a href="#">Contact</a></li>
-                            </ul>
-                        </div>
-                        <div class="footer-col-3 col-md-2 col-xs-6">
-                            <h6 class="mb-20">Community</h6>
-                            <ul class="menu-footer">
-                                <li><a href="#">Feature</a></li>
-                                <li><a href="#">Pricing</a></li>
-                                <li><a href="#">Credit</a></li>
-                                <li><a href="#">FAQ</a></li>
-                            </ul>
-                        </div>
-                        <div class="footer-col-4 col-md-2 col-xs-6">
-                            <h6 class="mb-20">Quick links</h6>
-                            <ul class="menu-footer">
-                                <li><a href="#">iOS</a></li>
-                                <li><a href="#">Android</a></li>
-                                <li><a href="#">Microsoft</a></li>
-                                <li><a href="#">Desktop</a></li>
-                            </ul>
-                        </div>
-                        <div class="footer-col-5 col-md-2 col-xs-6">
-                            <h6 class="mb-20">More</h6>
-                            <ul class="menu-footer">
-                                <li><a href="#">Privacy</a></li>
-                                <li><a href="#">Help</a></li>
-                                <li><a href="#">Terms</a></li>
-                                <li><a href="#">FAQ</a></li>
-                            </ul>
-                        </div>
-                        <div class="footer-col-6 col-md-3 col-sm-12">
-                            <h6 class="mb-20">Download App</h6>
-                            <p class="color-text-paragraph-2 font-xs">Download our Apps and get extra 15% Discount on your first Order…!</p>
-                            <div class="mt-15"><a class="mr-5" href="#"><img src="/images/app-store.png" alt="joxBox" /></a><a href="#"><img src="/images/android.png" alt="joxBox" /></a></div>
-                        </div>
-                    </div>
-                    <div class="footer-bottom mt-50">
-                        <div class="row">
-                            <div class="col-md-6"><span class="font-xs color-text-paragraph">Copyright © 2022. JobBox all right reserved</span></div>
-                            <div class="col-md-6 text-md-end text-start">
-                                <div class="footer-social"><a class="font-xs color-text-paragraph" href="#">Privacy Policy</a><a class="font-xs color-text-paragraph mr-30 ml-30" href="#">Terms &amp; Conditions</a><a class="font-xs color-text-paragraph" href="#">Security</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
         </div>
-
-
-
-
-
-    )
+    );
 }
 
-export default Login 
+export default Login;

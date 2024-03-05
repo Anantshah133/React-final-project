@@ -6,7 +6,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import Modal from 'react-bootstrap/Modal';
 import Footer from "./Footer";
 import { data } from './data';
-
+import Header from './Header';
 const Home = () => {
     const [industry, setIndustry] = useState('0');
     const [location, setLocation] = useState('');

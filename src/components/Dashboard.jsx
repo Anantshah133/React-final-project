@@ -9,19 +9,21 @@ import look from './newIcons/look.svg';
 import openFile from './newIcons/open-file.svg';
 import doc from './newIcons/doc.svg';
 import man from './newIcons/man.svg';
-import { getDatabase, onValue, ref } from 'firebase/database';
+import { getDatabase, onValue, ref, remove } from 'firebase/database';
 import app from '../firebase';
 import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
     const [jobs, setJobs] = useState([]);
     const [isLoading, setIsLoading] = useState([]);
+    const [selectedJobId, setSelectedJobId] = useState(null);
+
     const db = getDatabase(app);
     const navigate = useNavigate();
 
     useEffect(() => {
         const adminFlag = JSON.parse(localStorage.getItem("adminFlag")) || false;
-        if(!adminFlag){
+        if (!adminFlag) {
             navigate('/adminLogin');
         }
 
@@ -44,7 +46,19 @@ const Dashboard = () => {
     const handleEdit = (id) => {
         navigate(`/editJob/${id}`);
     }
-    console.log(jobs)
+
+    const handleDelete = () => {
+        if (selectedJobId) {
+            remove(ref(db, `allJobs/${selectedJobId}`))
+                .then(() => {
+                    const updatedJobs = jobs.filter(job => job.id !== selectedJobId);
+                    setJobs(updatedJobs);
+                    setSelectedJobId(null);
+                })
+                .catch((error) => console.error("Error removing document: ", error));
+        }
+    };
+
     return (
         <main className='position-relative h-100'>
             <div className="container">
@@ -185,12 +199,11 @@ const Dashboard = () => {
                                                         <div className="col-lg-5 col-5 d-flex px-3"></div>
                                                     </div>
                                                 </div>
-
                                                 <div className='mt-3 d-flex gap-3'>
                                                     <button className="custom-btn-primary" onClick={() => handleEdit(job.id)}>
                                                         Edit
                                                     </button>
-                                                    <button className="custom-btn-danger" onClick={() => handleEdit(job.id)}>
+                                                    <button className="custom-btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" onClick={() => setSelectedJobId(job.id)}>
                                                         Delete
                                                     </button>
                                                 </div>
@@ -205,6 +218,24 @@ const Dashboard = () => {
                             </div>
                         )
                     }
+                </div>
+            </div>
+
+            <div className="modal fade" id="confirmDeleteModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLabel">Confirm Deletion</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            Are you sure you want to delete this job?
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" className="btn btn-danger" data-bs-dismiss="modal" onClick={(handleDelete)}>Delete</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>

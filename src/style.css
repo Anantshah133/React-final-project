@@ -10,6 +10,11 @@
 @import url(select2.min.css);
 @import url(perfect-scrollbar.css);
 @import url(animate.min.css);
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 /*RESET*/
 html,
 body,
@@ -380,7 +385,7 @@ input[type=number]:focus,
   background-color: #ffffff;
   padding: 11px 15px 13px 15px;
   width: 100%;
-  color: #A0ABB8;
+  /* color: #A0ABB8; */
 }
 .form-control::-moz-placeholder {
   color: #A0ABB8;
